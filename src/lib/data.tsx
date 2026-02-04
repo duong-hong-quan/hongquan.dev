@@ -1,27 +1,27 @@
 import { Github } from "lucide-react";
 import { Linkedin } from "lucide-react";
 
-import LogoJavascript from "/public/images/logos/icon-javascript.svg";
-import LogoTypescript from "/public/images/logos/icon-typescript.svg";
-import LogoReact from "/public/images/logos/icon-react.svg";
-import LogoNextjs from "/public/images/logos/icon-nextjs.svg";
-import LogoNodejs from "/public/images/logos/icon-nodejs.svg";
-import LogoNest from "/public/images/logos/icon-nest.svg";
-import LogoPostgreSQL from "/public/images/logos/icon-postgresql.svg";
-import LogoMongoDB from "/public/images/logos/icon-mongodb.svg";
-import LogoTailwindcss from "/public/images/logos/icon-tailwindcss.svg";
-import LogoGit from "/public/images/logos/icon-git.svg";
-import LogoCsharp from "/public/images/logos/icon-csharp.png";
-import LogoMysql from "/public/images/logos/icon-mysql.png";
-import LogoDocker from "/public/images/logos/icon-docker.png";
-import LogoPython from "/public/images/logos/icon-python.png";
+import LogoJavascript from "../../public/images/logos/icon-javascript.svg";
+import LogoTypescript from "../../public/images/logos/icon-typescript.svg";
+import LogoReact from "../../public/images/logos/icon-react.svg";
+import LogoNextjs from "../../public/images/logos/icon-nextjs.svg";
+import LogoNodejs from "../../public/images/logos/icon-nodejs.svg";
+import LogoNest from "../../public/images/logos/icon-nest.svg";
+import LogoPostgreSQL from "../../public/images/logos/icon-postgresql.svg";
+import LogoMongoDB from "../../public/images/logos/icon-mongodb.svg";
+import LogoTailwindcss from "../../public/images/logos/icon-tailwindcss.svg";
+import LogoGit from "../../public/images/logos/icon-git.svg";
+import LogoCsharp from "../../public/images/logos/icon-csharp.png";
+import LogoMysql from "../../public/images/logos/icon-mysql.png";
+import LogoDocker from "../../public/images/logos/icon-docker.png";
+import LogoPython from "../../public/images/logos/icon-python.png";
 
-import FPTSoftware from "/public/images/logos/fpt_software.png";
-import YAS from "/public/images/logos/yas.png";
-import TGLSolutions from "/public/images/logos/tgl_solutions.png";
-import AvatarImage from "/public/images/avatar.jpg";
-import CovidTest from "/public/images/covid.jpg";
-import Signature from "/public/images/sig.jpg";
+import FPTSoftware from "../../public/images/logos/fpt_software.png";
+import YAS from "../../public/images/logos/yas.png";
+import TGLSolutions from "../../public/images/logos/tgl_solutions.png";
+import AvatarImage from "../../public/images/avatar.jpg";
+import CovidTest from "../../public/images/covid.jpg";
+import Signature from "../../public/images/sig.jpg";
 
 import {
   ExperienceDetails,
