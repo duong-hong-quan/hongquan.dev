@@ -34,36 +34,27 @@ const AboutMeSection = () => {
             Curious about me? Here you have it:
           </Typography>
           <Typography>
-            I&apos;m Lewis Duong, a 21-year-old passionate developer who
-            specializes in full stack development with technologies like .NET
-            Core, ReactJS, NextJS, and NestJS. I am enthusiastic about bringing
-            the technical and visual aspects of digital products to life. User
-            experience, pixel perfect design, and writing clear, readable,
-            highly performant code matters to me.
+            I&apos;m Hong Quan, a Team Leader at TGL with a strong background in back-end engineering and system design.
+            My current focus is building scalable, production-ready systems and gradually integrating AI-driven solutions into real-world products.
           </Typography>
           <Typography>
-            I began my journey as a web developer in 2022, and since then,
-            I&apos;ve continued to grow and evolve as a developer, taking on new
-            challenges and learning the latest technologies along the way. Now,
-            with 1 year of experience, I&apos;m building cutting-edge web
-            applications using modern technologies such as Next.js, TypeScript,
-            NestJS, TailwindCSS, Supabase, and much more.
+            I value clarity in architecture, reliability in delivery, and long-term team growth.
+            I lead projects from requirement analysis through architecture to delivery, while mentoring engineers through code reviews, technical guidance, and feedback.
           </Typography>
           <Typography>
-            I am very much a progressive thinker and enjoy working on products
-            end to end, from ideation all the way to development. I can handle
-            testing with automation testing (E2E) and unit testing.
+            I balance technical quality, delivery speed, and maintainability in every project.
+            My expertise spans .NET Core, ASP.NET Core, NestJS, ReactJS, and NextJS, with a growing focus on AI system integration including LLM and RAG-based services.
           </Typography>
 
           <Typography>Finally, some quick bits about me.</Typography>
           <div className="flex flex-col gap-2 md:flex-row md:gap-6">
             <ul className="flex list-inside list-disc flex-col gap-2">
               <Typography component="li">
-                Strongly about back-end development
+                Team Leader & Back-End Engineer
               </Typography>
-              <Typography component="li">Can lead team</Typography>
+              <Typography component="li">AI-Oriented Software Engineer</Typography>
               <Typography component="li">
-                Having knowledge about system architecture and flow system
+                Master&apos;s in Software Engineering (AI-oriented)
               </Typography>
             </ul>
           </div>

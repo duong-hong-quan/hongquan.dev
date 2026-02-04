@@ -8,7 +8,7 @@ import Container from "@/components/layout/container";
 
 const HeroSection = () => {
   return (
-    <Container id="hero">
+    <Container className="mesh-bg" id="hero">
       <div className="flex flex-col gap-12 md:flex-row">
         {/* Image */}
         <div className="flex items-center justify-center md:order-last md:flex-grow md:justify-end">
@@ -27,16 +27,13 @@ const HeroSection = () => {
         <div className="flex max-w-3xl flex-grow flex-col justify-center gap-8 md:order-first md:items-start md:justify-center 2xl:gap-12">
           <div className="flex flex-col gap-2">
             <Typography variant="h1">
-              Hi, I&apos;m Lewis{" "}
+              Hi, I&apos;m Hong Quan{" "}
               <span className="inline-block animate-waving-hand">👋</span>
             </Typography>
             <Typography>
-              I&apos;m a full stack developer (React.js/NextJS & Nest.js & .NET
-              Core) with a focus on creating (and occasionally designing)
-              exceptional digital experiences that are fast, accessible,
-              visually appealing, and responsive. Even though I have been
-              creating web applications for over 1 years, I still love it as if
-              it was something new.
+              I&apos;m a Team Leader at TGL with a strong background in back-end engineering and system design.
+              My current focus is building scalable, production-ready systems and gradually integrating AI-driven solutions into real-world products.
+              I value clarity in architecture, reliability in delivery, and long-term team growth.
             </Typography>
           </div>
           <div className="flex flex-col gap-2">

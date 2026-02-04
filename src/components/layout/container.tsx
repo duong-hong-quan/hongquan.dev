@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import { mergeClasses } from '@/lib/utils';
 
-interface ContainerProps extends React.HTMLAttributes<HTMLElement> {}
+interface ContainerProps extends React.HTMLAttributes<HTMLElement> { }
 
 const Container = React.forwardRef<HTMLElement, ContainerProps>(
   ({ className, children, ...props }: ContainerProps, ref) => {
     return (
       <section
         className={mergeClasses(
-          'w-full bg-gray py-16 md:py-20 2xl:py-24',
+          'w-full py-20 md:py-28 2xl:py-32',
           className
         )}
         ref={ref}

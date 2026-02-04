@@ -9,24 +9,25 @@ import Footer from "@/components/layout/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const title = "Lewis Duong | Full Stack Developer from Ho Chi Minh, Viet Nam.";
+const title = "Hong Quan | Team Leader & AI Software Engineer";
 const description =
-  "A self-proclaimed designer who specializes in full stack development (React.js & Node.js), Ho Chi Minh, Viet Nam.";
-const url = "https://Lewisshah.dev";
+  "A Team Leader and AI-Oriented Software Engineer specializing in scalable systems, AI integration, and technical leadership.";
+const url = "https://hongquan.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
   title,
   description,
   keywords: [
-    "Frontend Developer",
-    "Full Stack Developer",
-    "React Developer",
+    "Team Leader",
+    "AI Engineer",
+    "Software Architecture",
+    "Backend Engineer",
     ".NET Developer",
     "NestJS Developer",
-    "Next.js Developer",
+    "Machine Learning",
   ],
-  creator: "Lewis Shah",
+  creator: "Hong Quan",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     siteName: title,
     images: [
       {
-        url: "/images/open-graph-Lewis.png",
+        url: "/images/avatar.jpg",
       },
     ],
   },
@@ -47,8 +48,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    creator: "@shahLewism",
-    images: "/images/open-graph-Lewis.png",
+    creator: "@hongquan0312",
+    images: "/images/avatar.jpg",
   },
   icons: {
     icon: "/favicon.ico",

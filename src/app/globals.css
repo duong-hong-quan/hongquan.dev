@@ -5,30 +5,47 @@
 /* Ref :: https://twitter.com/steventey/status/1677339375645126659 */
 :root {
   --app-gray-default: 255 255 255;
-  --app-gray-50: 249 250 251;
-  --app-gray-100: 243 244 246;
-  --app-gray-200: 229 231 235;
-  --app-gray-300: 209 213 219;
-  --app-gray-400: 156 163 175;
-  --app-gray-500: 107 114 128;
-  --app-gray-600: 75 85 99;
-  --app-gray-700: 55 65 81;
-  --app-gray-800: 31 41 55;
-  --app-gray-900: 17 24 39;
-  --app-gray-950: 3 7 18;
+  --app-gray-50: 248 250 252;
+  --app-gray-100: 241 245 249;
+  --app-gray-200: 226 232 240;
+  --app-gray-300: 203 213 225;
+  --app-gray-400: 148 163 184;
+  --app-gray-500: 100 116 139;
+  --app-gray-600: 71 85 105;
+  --app-gray-700: 51 65 85;
+  --app-gray-800: 30 41 59;
+  --app-gray-900: 15 23 42;
+  --app-gray-950: 2 6 23;
+  --primary: 14 165 233; /* vibrant sky blue */
 }
 
 .dark {
-  --app-gray-default: 3 7 18;
-  --app-gray-50: 17 24 39;
-  --app-gray-100: 31 41 55;
-  --app-gray-200: 55 65 81;
-  --app-gray-300: 75 85 99;
-  --app-gray-400: 107 114 128;
-  --app-gray-500: 156 163 175;
-  --app-gray-600: 209 213 219;
-  --app-gray-700: 229 231 235;
-  --app-gray-800: 243 244 246;
-  --app-gray-900: 249 250 251;
+  --app-gray-default: 2 6 23;
+  --app-gray-50: 15 23 42;
+  --app-gray-100: 30 41 59;
+  --app-gray-200: 51 65 85;
+  --app-gray-300: 71 85 105;
+  --app-gray-400: 100 116 139;
+  --app-gray-500: 148 163 184;
+  --app-gray-600: 203 213 225;
+  --app-gray-700: 226 232 240;
+  --app-gray-800: 241 245 249;
+  --app-gray-900: 248 250 252;
   --app-gray-950: 255 255 255;
+}
+
+@layer components {
+  .glass {
+    @apply border border-gray-200/20 bg-gray-50/40 backdrop-blur-md dark:border-gray-700/30 dark:bg-gray-900/40;
+  }
+  .glass-card {
+    @apply rounded-2xl border border-gray-200/20 bg-gray-50/10 backdrop-blur-lg shadow-xl dark:border-gray-700/20 dark:bg-gray-900/20;
+  }
+}
+
+.mesh-bg {
+  background-image: radial-gradient(at 0% 0%, hsla(199, 89%, 48%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(215, 89%, 48%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(245, 89%, 43%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(275, 89%, 43%, 0.1) 0px, transparent 50%);
 }
