@@ -103,8 +103,8 @@ const ExperienceDetails = ({
             {position}
           </Typography>
           <Typography className="text-xs opacity-60">
-            {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(startDate)} -{' '}
-            {currentlyWorkHere ? 'Now' : endDate ? new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(endDate) : 'NA'}
+            {new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(startDate)} -{' '}
+            {currentlyWorkHere ? 'Now' : endDate ? new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(endDate) : 'NA'}
           </Typography>
 
           {currentlyWorkHere && (
