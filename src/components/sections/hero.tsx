@@ -133,7 +133,7 @@ const HeroSection = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <Typography variant="h1" className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Hong Quan
                 </span>{" "}
@@ -165,7 +165,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6, duration: 0.6 }}
             >
               <Typography className="text-lg md:text-xl leading-relaxed opacity-80 max-w-2xl">
-                I'm a Team Leader at TGL with a strong background in back-end engineering and system design.
+                I&apos;m a Team Leader at TGL with a strong background in back-end engineering and system design.
                 My current focus is building scalable, production-ready systems and gradually integrating AI-driven solutions into real-world products.
               </Typography>
             </motion.div>
