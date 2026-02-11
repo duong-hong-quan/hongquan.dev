@@ -31,7 +31,7 @@ const ProjectDetails = ({
     >
       <Card className="mx-auto flex flex-col w-full max-w-4xl overflow-hidden group hover:shadow-2xl transition-all duration-300 h-full">
         {/* Image Section - Top */}
-        <div className="relative w-full h-64 md:h-80 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+        <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-80 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
@@ -48,32 +48,33 @@ const ProjectDetails = ({
 
           {/* External Link Button - Floating */}
           <Link
-            href={url}
             noCustomization
-            className="absolute top-4 right-4 z-20 rounded-lg p-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm hover:bg-gradient-to-r hover:from-sky-500/90 hover:to-purple-500/90 transition-all duration-300 group/link shadow-lg"
+            href={url}
             externalLink
+            className="absolute top-3 right-3 md:top-4 md:right-4 z-20 p-2 md:p-2.5 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group/link"
           >
-            <ExternalLink className="w-5 h-5 stroke-gray-700 dark:stroke-gray-300 group-hover/link:stroke-white transition-colors" />
+            <ExternalLink className="w-4 h-4 md:w-5 md:h-5 text-gray-700 dark:text-gray-300 group-hover/link:text-sky-500 transition-colors" />
           </Link>
         </div>
 
         {/* Content Section - Bottom */}
-        <div className="flex flex-col gap-4 p-6 md:p-8 flex-grow">
-          <Typography variant="subtitle" className="font-bold text-xl bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">
-            {name}
-          </Typography>
+        <div className="flex flex-col gap-3 md:gap-4 p-4 md:p-6 flex-grow">
+          {/* Project Name */}
+          <Link href={url} externalLink className="group/title">
+            <Typography variant="subtitle" className="font-bold text-lg md:text-xl bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent group-hover/title:from-sky-500 group-hover/title:to-purple-500 transition-all">
+              {name}
+            </Typography>
+          </Link>
 
-          <Typography className="leading-relaxed opacity-80 text-sm md:text-base flex-grow">
+          {/* Description */}
+          <Typography className="text-sm md:text-base opacity-80 line-clamp-3">
             {description}
           </Typography>
 
           {/* Technologies */}
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-200/50">
+          <div className="flex flex-wrap gap-2 mt-auto pt-2">
             {technologies?.map((technology, index) => (
-              <Tag
-                key={index}
-                label={technology}
-              />
+              <Tag key={index} label={technology} />
             ))}
           </div>
         </div>

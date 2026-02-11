@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Briefcase } from 'lucide-react';
+import { Calendar, Briefcase, X } from 'lucide-react';
 import { useState } from 'react';
 
 import Typography from '@/components/general/typography';
@@ -42,10 +42,8 @@ const ExperienceDetails = ({
 
   return (
     <div
-      className="relative flex flex-col items-center w-full md:w-auto"
+      className="relative flex flex-col items-center w-full md:w-auto cursor-pointer"
       style={{ minWidth: '240px', maxWidth: '280px' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onClick={handleInteraction}
     >
       {/* Timeline Node */}
@@ -133,7 +131,10 @@ const ExperienceDetails = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998]"
-              onClick={handleClose}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClose();
+              }}
             />
 
             {/* Popup Card */}
@@ -142,10 +143,25 @@ const ExperienceDetails = ({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-[90vw] max-w-[480px] max-h-[85vh] overflow-y-auto"
+              className="fixed inset-4 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:inset-auto z-[9999] w-auto md:w-[90vw] md:max-w-[480px] max-h-[calc(100vh-2rem)] md:max-h-[85vh] overflow-y-auto m-auto"
               onWheel={(e) => e.stopPropagation()}
             >
-              <div className="glass-premium p-6 md:p-8 flex flex-col gap-5 shadow-2xl border-2 border-sky-300/50 dark:border-sky-500/30 rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl">
+              <div
+                className="glass-premium p-4 md:p-6 lg:p-8 flex flex-col gap-4 md:gap-5 shadow-2xl border-2 border-sky-300/50 dark:border-sky-500/30 rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button - Mobile */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleClose();
+                  }}
+                  className="absolute top-3 right-3 md:top-4 md:right-4 z-10 p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="w-4 h-4 md:w-5 md:h-5 text-gray-600 dark:text-gray-400" />
+                </button>
+
                 {/* Header with Logo */}
                 <div className="flex items-center gap-4 pb-4 border-b border-gray-200/50">
                   <div className="relative  p-3 rounded-xl bg-gradient-to-br from-sky-50 to-purple-50 dark:from-sky-900/30 dark:to-purple-900/30">
