@@ -146,7 +146,7 @@ export const EXPERIENCES: ExperienceDetails[] = [
   {
     logo: TGLSolutions,
     logoAlt: "TGL Solutions logo",
-    position: "Team Lead Manager",
+    position: "Project Manager",
     startDate: new Date(2026, 0),
     currentlyWorkHere: true,
     summary: [

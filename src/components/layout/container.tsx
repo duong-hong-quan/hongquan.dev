@@ -15,7 +15,7 @@ const Container = React.forwardRef<HTMLElement, ContainerProps>(
         ref={ref}
         {...props}
       >
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
+        <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-6 md:gap-12 md:px-12 lg:px-16">
           {children}
         </div>
       </section>

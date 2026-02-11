@@ -9,9 +9,9 @@ import Footer from "@/components/layout/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const title = "Hong Quan | Team Leader & AI Software Engineer";
+const title = "Hong Quan | Project Manager & AI Software Engineer";
 const description =
-  "A Team Leader and AI-Oriented Software Engineer specializing in scalable systems, AI integration, and technical leadership.";
+  "A Project Manager and AI-Oriented Software Engineer specializing in scalable systems, AI integration, and technical leadership.";
 const url = "https://hongquan.dev";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title,
   description,
   keywords: [
-    "Team Leader",
+    "Project Manager",
     "AI Engineer",
     "Software Architecture",
     "Backend Engineer",

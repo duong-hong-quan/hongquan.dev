@@ -1,4 +1,8 @@
-import { motion } from 'framer-motion';
+'use client';
+
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Briefcase } from 'lucide-react';
+import { useState } from 'react';
 
 import Typography from '@/components/general/typography';
 import ImageWrapper from '@/components/data-display/image-wrapper';
@@ -11,6 +15,7 @@ const dateFormatOptions: Intl.DateTimeFormatOptions = {
 
 type Props = ExperienceDetailsProps & {
   index: number;
+  isLast?: boolean;
 };
 
 const ExperienceDetails = ({
@@ -23,53 +28,196 @@ const ExperienceDetails = ({
   endDate,
   summary,
   index,
+  isLast = false,
 }: Props) => {
-  const isEven = index % 2 === 0;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleInteraction = () => {
+    setIsHovered(true);
+  };
+
+  const handleClose = () => {
+    setIsHovered(false);
+  };
 
   return (
     <div
-      className={`relative flex w-full flex-col items-center justify-between md:flex-row ${isEven ? 'md:flex-row-reverse' : ''
-        }`}
+      className="relative flex flex-col items-center w-full md:w-auto"
+      style={{ minWidth: '240px', maxWidth: '280px' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={handleInteraction}
     >
-      {/* Milestone Dot */}
-      <div className="absolute left-4 top-0 z-20 h-4 w-4 rounded-full border-2 border-sky-500 bg-gray-50 md:left-1/2 md:-translate-x-1/2" />
+      {/* Timeline Node */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.15 }}
+        className="relative z-10 mb-6"
+      >
+        {/* Milestone Circle */}
+        <div className="relative mt-8 flex items-center justify-center cursor-pointer">
+          <motion.div
+            className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-sky-500/20 via-purple-500/20 to-pink-500/20 blur-2xl"
+            animate={{ scale: isHovered ? 1.2 : 1, opacity: isHovered ? 0.8 : 0.4 }}
+            transition={{ duration: 0.3 }}
+          />
+          <motion.div
+            className="relative w-16 h-16 rounded-full bg-gradient-to-br from-sky-500 to-purple-500 p-1 shadow-lg"
+            animate={{ scale: isHovered ? 1.15 : 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className=" w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
+              <ImageWrapper
+                src={logo}
+                srcForDarkMode={darkModeLogo}
+                alt={logoAlt}
+                className="w-10 h-10 object-contain"
+              />
+            </div>
+          </motion.div>
 
-      {/* Spacer for MD screens to keep the timeline centered */}
-      <div className="hidden md:block md:w-[45%]" />
+          {/* Pulse Ring for Current Position */}
+          {currentlyWorkHere && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <span className="relative flex h-20 w-20">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              </span>
+            </div>
+          )}
+        </div>
+      </motion.div>
 
-      {/* Card Content */}
-      <div className="w-full pl-12 md:w-[45%] md:pl-0">
-        <div className="glass-card flex flex-col gap-4 p-6 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-sky-500/10">
-          <div className="flex items-center justify-between gap-4">
-            <ImageWrapper
-              src={logo}
-              srcForDarkMode={darkModeLogo}
-              alt={logoAlt}
-              className="max-h-12 max-w-[100px] object-contain"
-            />
-            <Typography className="text-sm font-medium text-gray-700">
-              {new Intl.DateTimeFormat('en-US', dateFormatOptions).format(startDate)} -{' '}
-              {currentlyWorkHere
-                ? 'Present'
-                : endDate
-                  ? new Intl.DateTimeFormat('en-US', dateFormatOptions).format(endDate)
-                  : 'NA'}
-            </Typography>
-          </div>
+      {/* Compact Title (Always Visible) */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.15 + 0.1 }}
+        className="w-full text-center px-4 relative z-10"
+      >
+        {/* Background to cover vertical line on mobile */}
+        <div className="md:hidden absolute inset-0 bg-white dark:bg-gray-900 -mx-2 rounded-lg" />
 
-          <Typography variant="subtitle" className="text-lg font-bold text-gray-900">
+        <div className="relative z-10">
+          <Typography variant="subtitle" className=" font-bold text-sm bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-1">
             {position}
           </Typography>
+          <Typography className="text-xs opacity-60">
+            {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(startDate)} -{' '}
+            {currentlyWorkHere ? 'Now' : endDate ? new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(endDate) : 'NA'}
+          </Typography>
 
-          <ul className="flex list-disc flex-col gap-2 pl-4">
-            {summary?.map((sentence, sentenceIndex) => (
-              <Typography component="li" key={sentenceIndex} className="text-sm leading-relaxed">
-                {sentence}
+          {currentlyWorkHere && (
+            <div className="flex items-center justify-center gap-1 mt-2">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              </span>
+              <Typography className="text-xs font-medium text-emerald-600">
+                Current
               </Typography>
-            ))}
-          </ul>
+            </div>
+          )}
         </div>
-      </div>
+      </motion.div>
+
+      {/* Hover Detail Card - Popup Style */}
+      <AnimatePresence>
+        {isHovered && (
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998]"
+              onClick={handleClose}
+            />
+
+            {/* Popup Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-[90vw] max-w-[480px] max-h-[85vh] overflow-y-auto"
+              onWheel={(e) => e.stopPropagation()}
+            >
+              <div className="glass-premium p-6 md:p-8 flex flex-col gap-5 shadow-2xl border-2 border-sky-300/50 dark:border-sky-500/30 rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl">
+                {/* Header with Logo */}
+                <div className="flex items-center gap-4 pb-4 border-b border-gray-200/50">
+                  <div className="relative  p-3 rounded-xl bg-gradient-to-br from-sky-50 to-purple-50 dark:from-sky-900/30 dark:to-purple-900/30">
+                    <ImageWrapper
+                      src={logo}
+                      srcForDarkMode={darkModeLogo}
+                      alt={logoAlt}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <Typography variant="subtitle" className="font-bold text-lg bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-1">
+                      {position}
+                    </Typography>
+
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-3.5 h-3.5 text-sky-500" />
+                      <Typography className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        {new Intl.DateTimeFormat('en-US', dateFormatOptions).format(startDate)} -{' '}
+                        {currentlyWorkHere ? 'Present' : endDate ? new Intl.DateTimeFormat('en-US', dateFormatOptions).format(endDate) : 'NA'}
+                      </Typography>
+                    </div>
+
+                    {currentlyWorkHere && (
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="relative flex h-2 w-2">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                        </span>
+                        <Typography className="text-xs font-medium text-emerald-600">
+                          Currently Working Here
+                        </Typography>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Responsibilities */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="w-5 h-5 text-purple-500" />
+                    <Typography className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Key Responsibilities
+                    </Typography>
+                  </div>
+
+                  <ul className="flex flex-col gap-3">
+                    {summary?.map((sentence, sentenceIndex) => (
+                      <motion.li
+                        key={sentenceIndex}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: sentenceIndex * 0.05 }}
+                        className="flex items-start gap-3 text-sm leading-relaxed"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-sky-500 to-purple-500" />
+                        <Typography className="text-sm opacity-80">
+                          {sentence}
+                        </Typography>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Bottom Indicator */}
+                <div className="h-1 w-full bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 rounded-full mt-2" />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
