@@ -56,6 +56,11 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 const googleAnalyticsId = process.env.GOOGLE_ANALYTICS_ID;

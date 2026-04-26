@@ -56,7 +56,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <Container className="relative overflow-hidden min-h-[90vh] flex items-center" id="hero">
+    <Container className="relative overflow-hidden min-h-[85vh] flex items-center" id="hero">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 -z-10">
         {/* Gradient Mesh */}
@@ -68,7 +68,7 @@ const HeroSection = () => {
 
         {/* Floating Orbs - Improved */}
         <motion.div
-          className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-br from-sky-400/30 to-blue-500/20 rounded-full blur-3xl"
+          className="absolute top-20 -left-20 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-br from-sky-400/30 to-blue-500/20 rounded-full blur-3xl"
           animate={{
             y: [0, 40, 0],
             x: [0, 30, 0],
@@ -81,7 +81,7 @@ const HeroSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-purple-400/30 to-pink-500/20 rounded-full blur-3xl"
+          className="absolute bottom-20 -right-20 w-64 h-64 md:w-[500px] md:h-[500px] bg-gradient-to-tl from-purple-400/30 to-pink-500/20 rounded-full blur-3xl"
           animate={{
             y: [0, -50, 0],
             x: [0, -30, 0],
@@ -94,36 +94,38 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Floating Particles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-sky-400 to-purple-400 rounded-full opacity-20"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + (i % 3) * 20}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5,
-            }}
-          />
-        ))}
+        {/* Floating Particles - desktop only */}
+        <div className="hidden md:block">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-gradient-to-r from-sky-400 to-purple-400 rounded-full opacity-20"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${30 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{
+                duration: 4 + i,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.5,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-col gap-16 md:flex-row md:items-center relative z-10 w-full">
+      <div className="flex flex-col gap-8 md:gap-16 md:flex-row md:items-center relative z-10 w-full">
         {/* Content - Left Side */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-1 flex flex-col justify-center gap-8 md:gap-10"
+          className="flex-1 flex flex-col justify-center gap-6 md:gap-10"
         >
           {/* Main Heading */}
           <div className="flex flex-col gap-4">
@@ -132,12 +134,11 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <Typography variant="h1" className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+              <Typography variant="h1" className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
                 Hi, I&apos;m{" "}
                 <span className="bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Hong Quan
-                </span>{" "}
-
+                </span>
               </Typography>
             </motion.div>
 
@@ -146,12 +147,12 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="h-12 md:h-14"
+              className="h-10 md:h-14"
             >
-              <Typography className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <Typography className="text-xl sm:text-2xl md:text-4xl font-bold bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 {typedText}
                 <motion.span
-                  className="inline-block w-0.5 h-8 md:h-10 bg-gradient-to-b from-sky-500 to-purple-500 ml-1"
+                  className="inline-block w-0.5 h-6 md:h-10 bg-gradient-to-b from-sky-500 to-purple-500 ml-1"
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{ duration: 0.8, repeat: Infinity }}
                 />
@@ -164,7 +165,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <Typography className="text-lg md:text-xl leading-relaxed opacity-80 max-w-2xl">
+              <Typography className="text-sm sm:text-base md:text-xl leading-relaxed opacity-80 max-w-2xl">
                 I&apos;m a Team Leader at TGL with a strong background in back-end engineering and system design.
                 My current focus is building scalable, production-ready systems and gradually integrating AI-driven solutions into real-world products.
               </Typography>
@@ -176,7 +177,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="grid grid-cols-3 gap-3 md:gap-4 w-full max-w-2xl"
+            className="grid grid-cols-3 gap-2 md:gap-4 w-full max-w-2xl"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -185,13 +186,13 @@ const HeroSection = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="glass-premium p-4 md:p-6 text-center group relative overflow-hidden"
+                className="glass-premium p-3 md:p-6 text-center group relative overflow-hidden"
               >
                 {/* Hover Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-500/0 to-purple-500/0 group-hover:from-sky-500/10 group-hover:to-purple-500/10 transition-all duration-500" />
 
-                <stat.icon className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-sky-500 group-hover:text-purple-500 transition-colors duration-300" />
-                <Typography className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sky-500 to-purple-500 bg-clip-text text-transparent">
+                <stat.icon className="w-5 h-5 md:w-8 md:h-8 mx-auto mb-1 md:mb-2 text-sky-500 group-hover:text-purple-500 transition-colors duration-300" />
+                <Typography className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-sky-500 to-purple-500 bg-clip-text text-transparent">
                   {countedStats[index]}+
                 </Typography>
                 <Typography className="text-xs md:text-sm opacity-70 mt-1">{stat.label}</Typography>
@@ -278,7 +279,7 @@ const HeroSection = () => {
             />
 
             {/* Avatar Container */}
-            <div className="relative w-[320px] h-[320px] md:w-[400px] md:h-[400px] lg:w-[480px] lg:h-[480px]">
+            <div className="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[480px] lg:h-[480px]">
               {/* Gradient Border */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 p-1">
                 <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 p-2">

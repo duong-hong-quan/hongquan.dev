@@ -53,13 +53,11 @@ const ContactSection = () => {
         </Typography>
       </div>
 
-      <div className="flex flex-col items-center gap-6 md:gap-12">
+      <div className="flex flex-col items-center gap-4 md:gap-12">
         <div className="flex flex-col items-center md:gap-4">
-          <div className="flex items-center gap-4 md:gap-5">
-            <Mail className="h-6 w-6 md:h-8 md:w-8" />
-            {/* <Link href={`mailto:${email}`}> */}
-            <Typography variant="h2">{email}</Typography>
-            {/* </Link> */}
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 md:gap-5 text-center sm:text-left">
+            <Mail className="h-5 w-5 md:h-8 md:w-8 flex-shrink-0" />
+            <Typography className="text-sm sm:text-base md:text-2xl lg:text-4xl font-semibold break-all">{email}</Typography>
             <IconButton
               size={width && width < 768 ? "md" : "lg"}
               onClick={() => handleCopyClick(email, "email")}
@@ -69,11 +67,9 @@ const ContactSection = () => {
               <Copy />
             </IconButton>
           </div>
-          <div className="flex items-center gap-4 md:gap-5">
-            <Phone className="h-6 w-6 md:h-8 md:w-8" />
-            {/* <Link href={`tel:${phone.replace(' ', '')}`}> */}
-            <Typography variant="h2">{phone}</Typography>
-            {/* </Link> */}
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 md:gap-5 text-center sm:text-left">
+            <Phone className="h-5 w-5 md:h-8 md:w-8 flex-shrink-0" />
+            <Typography className="text-sm sm:text-base md:text-2xl lg:text-4xl font-semibold">{phone}</Typography>
             <IconButton
               size={width && width < 768 ? "md" : "lg"}
               onClick={() => handleCopyClick(phone.replace(" ", ""), "phone")}

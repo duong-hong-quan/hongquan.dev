@@ -96,7 +96,7 @@ const AboutMeSection = () => {
             </Typography>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -148,7 +148,7 @@ const AboutMeSection = () => {
               {journey.map((item, index) => (
                 <motion.div
                   key={item.phase}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  initial={{ opacity: 0, x: 0 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}

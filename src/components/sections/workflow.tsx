@@ -65,7 +65,7 @@ const WorkflowSection = () => {
                 </Typography>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
                 {workflowSteps.map((step, index) => (
                     <motion.div
                         key={index}
